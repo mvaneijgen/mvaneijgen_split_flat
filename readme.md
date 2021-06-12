@@ -2,7 +2,9 @@
 
 ![mvaneijgen_split_flat](https://i.imgur.com/H5N4eqh.jpeg)
 
-Layout can be found here http://www.keyboard-layout-editor.com/#/gists/f41a3ca038961ca729d600bb026b0529
+Layout can be found here http://www.keyboard-layout-editor.com/#/gists/b696cb87b4e10608d2374c7b42fde7b5
+## Wiring
+![Wiring from https://kbfirmware.com](https://imgur.com/s8aNjCS.jpeg)
 
 Keyboard Maintainer: [mvaneijgen](https://github.com/mvaneijgen)  
 Hardware Supported: Pro Micro (ATmega32U4)

@@ -25,18 +25,6 @@
  * The second converts the arguments into a two-dimensional array which
  * represents the switch matrix.
  */
-// // Layout if it was not split
-// #define LAYOUT( \
-// 	K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, \
-// 	K100, K101, K102, K103, K104, K105, K106, K107, K108, K109, K110, K111, \
-// 	K200, K201, K202, K203, K204, K205, K206, K207, K208, K209, K210, K211, \
-// 	            K302, K303, K304, K305, K306, K307, K308, K309  \
-// ) { \
-// 	{ K000,  K001,  K002,  K003,  K004,  K005,  K006,  K007,  K008,  K009,  K010,  K011 }, \
-// 	{ K100,  K101,  K102,  K103,  K104,  K105,  K106,  K107,  K108,  K109,  K110,  K111 }, \
-// 	{ K200,  K201,  K202,  K203,  K204,  K205,  K206,  K207,  K208,  K209,  K210,  K211 }, \
-// 	{ KC_NO, KC_NO, K302,  K303,  K304,  K305,  K306,  K307,  K308,  K309,  KC_NO, KC_NO }  \
-// }
 
 #define LAYOUT( \
   L00, L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04, R05, \

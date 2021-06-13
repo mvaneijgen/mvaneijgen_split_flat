@@ -16,7 +16,7 @@
 #pragma once
 
 #include "quantum.h"
-
+// #define SPLIT_USB_DETECT
 /* This a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical

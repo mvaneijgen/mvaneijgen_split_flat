@@ -21,5 +21,6 @@
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define USE_SERIAL_PD2
+#define USE_SERIAL_PD0
+#define SOFT_SERIAL_PIN D0
 // place overrides here

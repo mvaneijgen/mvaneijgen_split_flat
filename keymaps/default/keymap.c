@@ -40,56 +40,60 @@
 #define KC_TLFT LGUI(LSFT(KC_LBRC)) // Move tab left
 #define KC_TRGT LGUI(LSFT(KC_RBRC)) // Move tab Rigth
 // END 👨‍💻 Custom short codes  -------------------------------------//
+//------------------------------------------------------//
+// 💃 Tap Dance  
+//------------------------------------------------------//
+#define KC_CMDZ LGUI(KC_Z) // Custom CMD + Z
+#define KC_CMDX LGUI(KC_X) // Custom CMD + X
+#define KC_CMDC LGUI(KC_C) // Custom CMD + C
+#define KC_CMDV LGUI(KC_V) // Custom CMD + V
+
+enum {
+  TD_Z_CMDZ,
+  TD_X_CMDX,
+  TD_C_CMDC,
+  TD_V_CMDV,
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_Z_CMDZ] = ACTION_TAP_DANCE_DOUBLE(KC_Z, KC_CMDZ),
+  [TD_X_CMDX] = ACTION_TAP_DANCE_DOUBLE(KC_X, KC_CMDX),
+  [TD_C_CMDC] = ACTION_TAP_DANCE_DOUBLE(KC_C, KC_CMDC),
+  [TD_V_CMDV] = ACTION_TAP_DANCE_DOUBLE(KC_V, KC_CMDV),
+};
+// END 💃 Tap Dance  -------------------------------------//
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
     LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC, 
     KC_TAB, CTL_A, ALT_S, GUI_D, SFT_F, KC_G, KC_H, SFT_J, GUI_K, ALT_L, CTL_BSLS, KC_EQL,
-    KC_GRV, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_EQL, 
-    MO(_NUMSYM), MO(_NUMSYM), KC_ENT, KC_DEL, KC_BSPC, KC_SPC, MO(_CTRL), MO(_CTRL)
+    KC_GRV, TD(TD_Z_CMDZ), TD(TD_X_CMDX), TD(TD_C_CMDC), TD(TD_V_CMDV), KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_EQL, 
+    MO(_NUMSYM), MO(_NUMSYM), LT(_RESET, KC_ENT), KC_DEL, KC_BSPC, KC_SPC, MO(_CTRL), MO(_CTRL)
   ),
   [_NUMSYM] = LAYOUT(
-    KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_TRNS, 
+    _______, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, _______, 
     KC_TAB, CTL_COLN, ALT_LCBR, GUI_LPRN, SFT_LBRC, KC_QUOT, KC_DQT, SFT_RBRC, GUI_RPRN, ALT_RCBR, CTL_SCLN, KC_EQL,
     KC_TLFT, KC_TILD, KC_PIPE, KC_AT, KC_MINS, KC_DLR, KC_LT, KC_GT, KC_AMPR, KC_PLUS, KC_UNDS, KC_QUES, 
-    KC_TRGT, KC_TRNS, TG(_NUMSYM), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TRGT, _______, TG(_NUMSYM), _______, _______, _______, _______, _______
   ),
   [_CTRL] = LAYOUT(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MFFD, KC_TRNS, KC_TRNS, KC_TRNS, 
-    KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RIGHT, KC_BRMD, KC_BRMU, RSFT_T(KC_VOLD), RGUI_T(KC_MPLY), LALT_T(KC_VOLU), RCTL_T(KC__MUTE), KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MRWD, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    _______, _______, _______, KC_UP, _______, _______, _______, KC_TLFT, KC_MFFD, KC_TRGT, _______, _______, 
+    _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, KC_BRMD, KC_BRMU, RSFT_T(KC_VOLD), RGUI_T(KC_MPLY), LALT_T(KC_VOLU), RCTL_T(KC__MUTE), _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_MRWD, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______
   ),
   [_GAME] = LAYOUT(
     LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPACE, 
-    KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_BSLS, KC_TRNS,
-    KC_LSHIFT, KC_GRAVE, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_UP, KC_TRNS, 
-    KC_LCTL, KC_LALT, KC_SPC, KC_ENT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_BSLS, _______,
+    KC_LSHIFT, KC_GRAVE, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_UP, _______, 
+    KC_LCTL, KC_LALT, KC_SPC, KC_ENT, _______, _______, _______, _______
   ),
   [_RESET] = LAYOUT(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET, 
-    TG(_GAME), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-    KC_TRNS, KC_TRNS, TG(_BASE), KC_TRNS, KC_TRNS, TG(_BASE), KC_TRNS, KC_TRNS
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET, 
+    TG(_GAME), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+    _______, _______, TG(_BASE), _______, _______, TG(_BASE), _______, _______
   ),
-  // [_CTRL] = LAYOUT(
-  //   KC_TRNS, KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MFFD KC_TRNS, KC_TRNS, KC_TRNS, 
-  //   KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RIGHT, KC_BRMD, KC_BRMU, RSFT_T(KC_VOLD), RGUI_T(KC_MPLY), LALT_T(KC_VOLU), RCTL_T(KC__MUTE), KC_TRNS,
-  //   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MRWD KC_TRNS, KC_TRNS, KC_TRNS,
-  //   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-  // ),
-  // [_GAME] = LAYOUT(
-  //   LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPACE, 
-  //   KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_BSLS, KC_TRNS,
-  //   KC_LSHIFT, KC_GRAVE, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_UP, KC_TRNS, 
-  //   KC_LCTL, KC_LALT, KC_SPC, KC_ENT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-  // ),
-  // [_RESET] = LAYOUT(
-  //   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET, 
-  //   TG(_GAME), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  //   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-  //   KC_TRNS, KC_TRNS, TG(_BASE), KC_TRNS, KC_TRNS, TG(_BASE), KC_TRNS, KC_TRNS,
-  // ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -104,25 +108,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case GUI_RPRN: if (record->tap.count > 0) { if (record->event.pressed) { tap_code16(KC_RPRN); } return false; }
       case ALT_RCBR: if (record->tap.count > 0) { if (record->event.pressed) { tap_code16(KC_RBRC); } return false; }
       case CTL_SCLN: if (record->tap.count > 0) { if (record->event.pressed) { tap_code16(KC_SCLN); } return false; }
-      // Custom shift keys
-//       static uint8_t saved_mods = 0; // Place this outside of the switch, but inside process_record_user()
-// case KC_BSPCDEL:
-//     if (record->event.pressed) {
-//         if (get_mods() & MOD_MASK_SHIFT) {
-//             saved_mods = get_mods() & MOD_MASK_SHIFT; // Mask off anything that isn't Shift
-//             del_mods(saved_mods); // Remove any Shifts present
-//             register_code(KC_DEL);
-//         } else {
-//             saved_mods = 0; // Clear saved mods so the add_mods() below doesn't add Shifts back when it shouldn't
-//             register_code(KC_BSPC);
-//         }
-//     } else {
-//         add_mods(saved_mods);
-//         unregister_code(KC_DEL);
-//         unregister_code(KC_BSPC);
-//     }
-
-//     return false;
     }
    return true;
 }

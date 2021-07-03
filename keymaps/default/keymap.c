@@ -1,8 +1,8 @@
 #include QMK_KEYBOARD_H
 #define _BASE 0
-#define _NUMSYM 1
-#define _CTRL 2
-#define _GAME 3
+#define _GAME 1
+#define _NUMSYM 2
+#define _CTRL 3
 #define _RESET 4
 //------------------------------------------------------//
 // 🏠️ Home row mods 
@@ -64,7 +64,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 // END 💃 Tap Dance  -------------------------------------//
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* ,----------------------------------------.                ,-----------------------------------------.
+  /* ,----------------------------------------.                ,-----------------------------------------.
   | ESC  |  Q   |  W   |  E   |  R   |  T   |                |  Y   |  U   |  I   |  O   |  P   | BSPC |
   |------+------+------+------+------+------|                |------+------+------+------+------+------|
   | TAB  |CTL_A |ALT_S |GUI_D |SFT_F |  G   |                |  H   |SFT_J |GUI_K |ALT_L |CTL_BS| EQL  |
@@ -80,6 +80,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV, TD(TD_Z_CMDZ), TD(TD_X_CMDX), TD(TD_C_CMDC), TD(TD_V_CMDV), KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_EQL, 
     MO(_NUMSYM), MO(_NUMSYM), LT(_RESET, KC_ENT), KC_DEL, KC_BSPC, KC_SPC, MO(_CTRL), MO(_CTRL)
   ),
+  [_GAME] = LAYOUT(
+    LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPACE, 
+    KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_BSLS, _______,
+    KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_UP, KC_DOT, KC_SLSH,
+    MO(_NUMSYM), KC_LCTL, KC_SPC, KC_ENT, KC_BSPC, KC_SPC, MO(_CTRL), MO(_CTRL)
+  ),  
   [_NUMSYM] = LAYOUT(
     _______, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, _______, 
     KC_TAB, CTL_COLN, ALT_LCBR, GUI_LPRN, SFT_LBRC, KC_QUOT, KC_DQT, SFT_RBRC, GUI_RPRN, ALT_RCBR, CTL_SCLN, KC_EQL,
@@ -92,17 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MRWD, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______
   ),
-  [_GAME] = LAYOUT(
-    LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPACE, 
-    KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_BSLS, _______,
-    KC_LSHIFT, KC_GRAVE, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_UP, _______, 
-    KC_LCTL, KC_LALT, KC_SPC, KC_ENT, _______, _______, _______, _______
-  ),
   [_RESET] = LAYOUT(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RESET, 
     TG(_GAME), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
-    _______, _______, TG(_BASE), _______, _______, TG(_BASE), _______, _______
+    _______, _______, _______, _______, _______, _______, _______, _______
   ),
 };
 

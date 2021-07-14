@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMSYM] = LAYOUT(
     _______, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, _______, 
     KC_TAB, CTL_COLN, ALT_LCBR, GUI_LPRN, SFT_LBRC, KC_QUOT, KC_DQT, SFT_RBRC, GUI_RPRN, ALT_RCBR, CTL_SCLN, KC_EQL,
-    KC_TLFT, KC_TILD, KC_PIPE, KC_AT, KC_MINS, KC_DLR, KC_LT, KC_GT, KC_AMPR, KC_PLUS, KC_UNDS, KC_QUES, 
+    KC_TLFT, KC_GRV, KC_AT, KC_HASH, KC_MINS, KC_DLR, KC_EQL, KC_PLUS, KC_AMPR, KC_DOT, KC_UNDS, KC_TILDE, 
     KC_TRGT, _______, TG(_NUMSYM), _______, _______, _______, _______, _______
   ),
   [_CTRL] = LAYOUT(

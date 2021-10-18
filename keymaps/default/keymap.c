@@ -35,10 +35,15 @@
 //------------------------------------------------------//
 // 👨‍💻 Custom short codes  
 //------------------------------------------------------//
+#define KC_FORC LGUI(LALT(KC_ESC)) // Force quit
+#define KC_CTXT LGUI(LSFT(KC_2)) // Capture text from image
 #define KC_CAPW LGUI(LSFT(KC_3)) // Capture whole screen
 #define KC_CAPP LGUI(LSFT(KC_4)) // Capture portion of screen
+#define KC_CREC LGUI(LSFT(KC_5)) // Record screen
 #define KC_TLFT LGUI(LSFT(KC_LBRC)) // Move tab left
-#define KC_TRGT LGUI(LSFT(KC_RBRC)) // Move tab Rigth
+#define KC_TRGT LGUI(LSFT(KC_RBRC)) // Move tab Right
+#define KC_EURO LALT(LSFT(KC_2)) // Euro €
+
 // END 👨‍💻 Custom short codes  -------------------------------------//
 //------------------------------------------------------//
 // 💃 Tap Dance  
@@ -77,23 +82,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
     LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC, 
     KC_TAB, CTL_A, ALT_S, GUI_D, SFT_F, KC_G, KC_H, SFT_J, GUI_K, ALT_L, CTL_BSLS, KC_EQL,
-    KC_GRV, TD(TD_Z_CMDZ), TD(TD_X_CMDX), TD(TD_C_CMDC), TD(TD_V_CMDV), KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_EQL, 
+    KC_GRV, KC_Z, TD(TD_X_CMDX), TD(TD_C_CMDC), TD(TD_V_CMDV), KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_EURO, 
     MO(_NUMSYM), MO(_NUMSYM), LT(_RESET, KC_ENT), KC_DEL, KC_BSPC, KC_SPC, MO(_CTRL), MO(_CTRL)
   ),
   [_GAME] = LAYOUT(
     LT(_RESET, KC_ESC), KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPACE, 
     KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_BSLS, _______,
-    KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_UP, KC_DOT, KC_SLSH,
+    KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_UP, KC_DOT, KC_SLSH,
     MO(_NUMSYM), KC_LCTL, KC_SPC, KC_ENT, KC_BSPC, KC_SPC, MO(_CTRL), MO(_CTRL)
   ),  
   [_NUMSYM] = LAYOUT(
     _______, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, _______, 
     KC_TAB, CTL_COLN, ALT_LCBR, GUI_LPRN, SFT_LBRC, KC_QUOT, KC_DQT, SFT_RBRC, GUI_RPRN, ALT_RCBR, CTL_SCLN, KC_EQL,
-    KC_TLFT, KC_GRV, KC_AT, KC_HASH, KC_MINS, KC_DLR, KC_EQL, KC_PLUS, KC_AMPR, KC_DOT, KC_UNDS, KC_TILDE, 
-    KC_TRGT, _______, TG(_NUMSYM), _______, _______, _______, _______, _______
+    KC_EURO, KC_GRV, KC_AT, KC_HASH, KC_MINS, KC_DLR, KC_EQL, KC_PLUS, KC_AMPR, KC_DOT, KC_UNDS, KC_EURO, 
+    _______, _______, TG(_NUMSYM), _______, _______, _______, _______, _______
   ),
   [_CTRL] = LAYOUT(
-    _______, _______, _______, KC_UP, _______, _______, _______, KC_TLFT, KC_MFFD, KC_TRGT, _______, _______, 
+    KC_FORC, KC_CAPW, KC_CTXT, KC_UP, KC_CAPP, KC_CREC, _______, KC_TLFT, KC_MFFD, KC_TRGT, _______, _______, 
     _______, _______, KC_LEFT, KC_DOWN, KC_RIGHT, KC_BRMD, KC_BRMU, RSFT_T(KC_VOLD), RGUI_T(KC_MPLY), LALT_T(KC_VOLU), RCTL_T(KC__MUTE), _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MRWD, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______
